@@ -4,7 +4,7 @@
 #include "Case.h"
 #include "Console.h"
 #include "Pion.h"
-
+#include <cstdlib>
 
 using namespace std;
 
@@ -34,19 +34,35 @@ void placerPion(Damier &jeu, Pion *a,int x,int y)
 }*/
 ///NOTE : LES LIGNES ECRITES EN CETTE COULEUR SONT DES PROBLEMES DONT JE NE TE DEMANDE PAS LA RESOLUTION, JE SUIS JUSTE EN TRAIN DE LES INDENTER !///
 
+
+
 int main()
 {
-    Damier jeu(5);
+
+
+     Damier jeu(5);
     jeu.initTab();
 
     //
     //Rhinoceros *R = new Rhinoceros();
 
-    Pion *M = new Montagne(jeu.getCase(2,2));
+    Pion *M = new Montagne(jeu.getCase(3,3));
+    Pion *R = new Rhinoceros(jeu.getCase(0,0));
+    Pion *R1 = new Rhinoceros(jeu.getCase(0,1));
+    Pion *R2 = new Rhinoceros(jeu.getCase(0,2));
+    Pion *R3 = new Rhinoceros(jeu.getCase(0,4));
+
+//    Pion *E = new Elephant (jeu.getCase(5,5));
     //placerPion(jeu,R,2,4);
 
     affichage_plateau();
     affichage_pions(M);
+    affichage_pions(R);
+    affichage_pions(R1);
+    affichage_pions(R2);
+    affichage_pions(R3);
+
+
 
 
     return 0;

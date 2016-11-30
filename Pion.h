@@ -29,7 +29,6 @@ private :
 
 public :
     virtual void afficher_char()const;
-
     Montagne(Case *place);
     virtual ~Montagne();
 };
@@ -42,7 +41,6 @@ protected :
 public :
     void afficher_orientation(); ///afficher l'orientation de l'animal sur la console
     //bool pousser();
-
     Animal();
     Animal(Case *place/*,Joueur joueur*/);
     virtual ~Animal();
@@ -57,5 +55,9 @@ public :
     Rhinoceros(Case *place);
     virtual ~Rhinoceros();
 };
-
+/*class Elephant : public Animal
+{
+public:
+    Elephant
+};*/
 #endif // PION_H_INCLUDED

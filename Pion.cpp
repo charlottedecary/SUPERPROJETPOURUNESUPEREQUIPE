@@ -67,14 +67,14 @@ void Montagne::afficher_char()const
 }
 
 Animal::Animal(Case * place/*,Joueur joueur*/)
-:Pion(0),m_orientation(0)
+:Pion(place)
 {}
 
 Animal::~Animal()
 {}
 
 Rhinoceros::Rhinoceros(Case* place)
-:Animal(0)
+:Animal(place)
 {}
 Rhinoceros::~Rhinoceros()
 {}
