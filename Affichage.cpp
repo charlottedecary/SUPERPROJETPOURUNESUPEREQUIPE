@@ -9,7 +9,7 @@ void affichage_plateau()
 
     std::cout<<"                                             "<<std::endl;
     std::cout<<"                                             "<<std::endl;
-    std::cout<<"                  1   2   4   5   6          "<<std::endl;
+    std::cout<<"                  1   2   3   4   5          "<<std::endl;
     std::cout<<"                                             "<<std::endl;
     std::cout<<"        +---+   +---+---+---+---+---+   +---+"<<std::endl;
     std::cout<<"    A   |   |   |   |   |   |   |   |   |   |"<<std::endl;
