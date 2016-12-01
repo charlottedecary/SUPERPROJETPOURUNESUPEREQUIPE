@@ -9,17 +9,17 @@ class Pion ///classe abstraite
 {
 protected:
     Case *m_place; ///case qui contient le pion
-
+    bool m_plateau;
 public:
     Case *getPlace();
-    bool Plateau(); /// le pion est sur le plateau
+   // bool Plateau(); /// le pion est sur le plateau
     virtual void bouger(Case *future_case); ///déplacement du pion
     //void afficher_info();
     virtual void afficher_char() const=0; ///afficher le pion sur la console
-
+    //virtual void entrer_plateau() const=0;
     ///connstructeurs, destructeurs
     Pion();
-    Pion(Case* place);
+    Pion(Case* place,bool _plateau);
     virtual ~Pion();
 };
 
@@ -29,7 +29,8 @@ private :
 
 public :
     virtual void afficher_char()const;
-    Montagne(Case *place);
+
+    Montagne(Case *place,bool plateau);
     virtual ~Montagne();
 };
 
@@ -42,22 +43,28 @@ public :
     void afficher_orientation(); ///afficher l'orientation de l'animal sur la console
     //bool pousser();
     Animal();
-    Animal(Case *place/*,Joueur joueur*/);
+    Animal(Case *place, bool plateau/*,Joueur joueur*/);
     virtual ~Animal();
 };
 
 class Rhinoceros : public Animal
 {
 private :
-
 public :
+     /// le pion est sur le plateau
+    //virtual void bouger(Case *future_case); ///déplacement du pion
     virtual void afficher_char()const;
-    Rhinoceros(Case *place);
+    //virtual void entrer_plateau()const;
+    Rhinoceros(Case *place,bool plateau);
     virtual ~Rhinoceros();
 };
-/*class Elephant : public Animal
+class Elephant : public Animal
 {
 public:
-    Elephant
-};*/
+    virtual void afficher_char()const;
+//virtual void entrer_plateau()const;
+    Elephant(Case *place,bool plateau);
+    virtual ~Elephant();
+
+};
 #endif // PION_H_INCLUDED

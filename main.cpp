@@ -38,32 +38,42 @@ void placerPion(Damier &jeu, Pion *a,int x,int y)
 
 int main()
 {
-
-
-     Damier jeu(5);
+    ///CREATION PLATEAU DE JEU
+    Damier jeu(9);
     jeu.initTab();
-
-    //
-    //Rhinoceros *R = new Rhinoceros();
-
-    Pion *M = new Montagne(jeu.getCase(3,3));
-    Pion *R = new Rhinoceros(jeu.getCase(0,0));
-    Pion *R1 = new Rhinoceros(jeu.getCase(0,1));
-    Pion *R2 = new Rhinoceros(jeu.getCase(0,2));
-    Pion *R3 = new Rhinoceros(jeu.getCase(0,4));
-
-//    Pion *E = new Elephant (jeu.getCase(5,5));
-    //placerPion(jeu,R,2,4);
+    ///CREATION ET INITIALISATION DES PIONS
+    Pion *M = new Montagne(jeu.getCase(4,1),true);
+    Pion *M1 = new Montagne(jeu.getCase(4,2),true);
+    Pion *M2 = new Montagne(jeu.getCase(4,3),true);
+    Pion *R = new Rhinoceros(jeu.getCase(0,0),false);
+    Pion *R1 = new Rhinoceros(jeu.getCase(0,1),false);
+    Pion *R2 = new Rhinoceros(jeu.getCase(0,2),false);
+    Pion *R3 = new Rhinoceros(jeu.getCase(0,3),false);
+    Pion *R4 = new Rhinoceros(jeu.getCase(0,4),false);
+    Pion *E = new Elephant(jeu.getCase(8,0),false);
+    Pion *E1 = new Elephant(jeu.getCase(8,1),false);
+    Pion *E2 = new Elephant(jeu.getCase(8,2),false);
+    Pion *E3 = new Elephant(jeu.getCase(8,3),false);
+    Pion *E4 = new Elephant(jeu.getCase(8,4),false);
 
     affichage_plateau();
     affichage_pions(M);
+    affichage_pions(M1);
+    affichage_pions(M2);
     affichage_pions(R);
     affichage_pions(R1);
     affichage_pions(R2);
     affichage_pions(R3);
+    affichage_pions(R4);
+    affichage_pions(E);
+    affichage_pions(E1);
+    affichage_pions(E2);
+    affichage_pions(E3);
+    affichage_pions(E4);
 
+    ///BOUCLE DE JEU
 
-
-
+    int a;
+    std::cin>>a;
     return 0;
 }

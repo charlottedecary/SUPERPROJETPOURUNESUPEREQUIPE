@@ -9,27 +9,29 @@ Pion::Pion()
 :m_place(0)
  {}
 
-Pion::Pion(Case* place)
-:m_place(place)
+Pion::Pion(Case* place,bool plateau)
+:m_place(place),m_plateau(plateau)
 {
     place->ajoutpion(this);
 }
+
+
 
 Pion::~Pion()
  {
  }
 
-bool Pion::Plateau()
+/*bool Pion::Plateau()
  {
      if(m_place!=0)
         return true;
      else
         return false;
- }
+ }*/
 
  void Pion::bouger(Case *futur_case)
  {
-     if(Plateau())
+    ///ON DOIT FAIRE UN SETTER POUR LE BOOL       /if(Plateau())
      m_place->enlevepion();
 
      m_place = futur_case;
@@ -54,8 +56,8 @@ bool Pion::Plateau()
 
  ///CLASSES FILLES
 
-Montagne::Montagne(Case* place)
-:Pion(place)
+Montagne::Montagne(Case* place, bool plateau)
+:Pion(place,plateau)
 {}
 
 Montagne::~Montagne()
@@ -66,15 +68,15 @@ void Montagne::afficher_char()const
     std::cout<<"M"<<std::endl;
 }
 
-Animal::Animal(Case * place/*,Joueur joueur*/)
-:Pion(place)
+Animal::Animal(Case * place,bool plateau/*,Joueur joueur*/)
+:Pion(place,plateau)
 {}
 
 Animal::~Animal()
 {}
 
-Rhinoceros::Rhinoceros(Case* place)
-:Animal(place)
+Rhinoceros::Rhinoceros(Case* place, bool plateau)
+:Animal(place,plateau)
 {}
 Rhinoceros::~Rhinoceros()
 {}
@@ -83,4 +85,13 @@ void Rhinoceros::afficher_char()const
 {
     std::cout<<"R"<<std::endl;
 }
+Elephant::Elephant(Case *place,bool plateau)
+:Animal(place,plateau)
+{}
+Elephant::~Elephant()
+{}
 
+void Elephant::afficher_char()const
+{
+    std::cout<<"E"<<std::endl;
+}
