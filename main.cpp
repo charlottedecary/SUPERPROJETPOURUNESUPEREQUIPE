@@ -38,6 +38,68 @@ void placerPion(Damier &jeu, Pion *a,int x,int y)
 
 int main()
 {
+    bool quit = false;
+    Console* menu = NULL;
+
+    // Alloue la mémoire du pointeur
+    menu = Console::getInstance();
+
+    // Affichage avec gotoligcol et couleur
+    menu->gotoLigCol(1, 25);
+    menu->setColor(COLOR_PURPLE);
+    std::cout << "MENU" << std::endl<<std::endl;
+    menu->gotoLigCol(4, 15);
+    std::cout << "1. Jouer";
+    menu->gotoLigCol(6, 15);
+    std::cout << "2. Instructions";
+    menu->gotoLigCol(8, 15);
+    std::cout << "3. Reglages (musique et bruitages)";
+    menu->gotoLigCol(10, 15);
+    std::cout << "4. Scores" << std::endl;
+
+
+    menu->setColor(COLOR_DEFAULT);
+
+    // Boucle événementielle
+    while (!quit)
+    {
+        // Si on a appuyé sur une touche du clavier
+        if (menu->isKeyboardPressed())
+        {
+            // Récupère le code ASCII de la touche
+            int key = menu->getInputKey();
+            std::cout << "touche = " << key << std::endl;
+
+            if (key == 27) // 27 = touche escape
+            {
+                quit = true;
+            }
+
+
+
+        }
+    }
+
+    // Libère la mémoire du pointeur !
+    Console::deleteInstance();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     ///CREATION PLATEAU DE JEU
     Damier jeu(9);
     jeu.initTab();
