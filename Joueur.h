@@ -10,11 +10,12 @@ class Joueur
 {
 private :
     std::string m_nom;
-    unsigned int equipe;
-    std::vector<Animal> m_piece;
+    char m_equipe;
+    std::vector<Animal*> m_piece;
 public :
-    Joueur(std::string nom);
-    void placerPion(Damier &jeu,int x,int y)
+    void placerPion(Damier &jeu,int x,int y);
+    void affiche();
+    Joueur(std::string nom,char equipe);
 };
 
 #endif // JOUEUR_H_INCLUDED
