@@ -1,6 +1,9 @@
 #include "Pion.h"
 #include "Case.h"
 #include <iostream>
+#include <cstdio>
+#include <windows.h>
+
 
 
 /// CLASSE MERE
@@ -15,25 +18,29 @@ Pion::Pion(Case* place,bool plateau)
     place->ajoutpion(this);
 }
 
-
-
 Pion::~Pion()
  {
  }
 
-/*bool Pion::Plateau()
+bool Pion::Plateau()
  {
-     if(m_place!=0)
+     if(m_plateau)
         return true;
      else
         return false;
- }*/
+ }
 
+ void Pion::entrer_plateau()
+ {
+     m_plateau = true;
+ }
+void Pion::sortir_plateau()
+{
+    m_plateau=false;
+}
  void Pion::bouger(Case *futur_case)
  {
-    ///ON DOIT FAIRE UN SETTER POUR LE BOOL       /if(Plateau())
      m_place->enlevepion();
-
      m_place = futur_case;
  }
 
@@ -75,16 +82,47 @@ Animal::Animal(Case * place,bool plateau/*,Joueur joueur*/)
 Animal::~Animal()
 {}
 
+void Animal::setOrientation()
+{
+    unsigned int orientation;
+    bool test=false;
+    do
+    {
+        std::cout<<"Choisissez l'orientation du pion "<<std::endl;
+        std::cout<<"haut : 1, bas : 2, gauche : 3, droite : 4"<<std::endl;
+        std::cin>>orientation;
+
+        if((orientation>0)&&(orientation<5))
+        {
+            m_orientation=orientation;
+            test = true;
+        }
+        else std::cout<<"orientation invalide!"<<std::endl;
+    }while(!test);
+}
+
 Rhinoceros::Rhinoceros(Case* place, bool plateau)
 :Animal(place,plateau)
 {}
+
 Rhinoceros::~Rhinoceros()
 {}
 
 void Rhinoceros::afficher_char()const
 {
-    std::cout<<"R"<<std::endl;
+    std::cout<<"R";
+    if(m_plateau)
+    {
+         switch(m_orientation)
+        {
+        case 1 : std::cout<<"h";break;
+        case 2 : std::cout<<"b";break;
+        case 3 : std::cout<<"g";break;
+        case 4 : std::cout<<"d";break;
+        }
+    }
 }
+
 Elephant::Elephant(Case *place,bool plateau)
 :Animal(place,plateau)
 {}
@@ -93,5 +131,15 @@ Elephant::~Elephant()
 
 void Elephant::afficher_char()const
 {
-    std::cout<<"E"<<std::endl;
+    std::cout<<"E";
+    if(m_plateau)
+    {
+         switch(m_orientation)
+        {
+        case 1 : std::cout<<"h";break;
+        case 2 : std::cout<<"b";break;
+        case 3 : std::cout<<"g";break;
+        case 4 : std::cout<<"d";break;
+        }
+    }
 }

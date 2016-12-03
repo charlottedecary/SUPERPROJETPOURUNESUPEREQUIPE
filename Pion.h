@@ -12,11 +12,14 @@ protected:
     bool m_plateau;
 public:
     Case *getPlace();
-   // bool Plateau(); /// le pion est sur le plateau
+    bool Plateau(); /// le pion est sur le plateau
     virtual void bouger(Case *future_case); ///déplacement du pion
     //void afficher_info();
     virtual void afficher_char() const=0; ///afficher le pion sur la console
     //virtual void entrer_plateau() const=0;
+    ///setters
+    void entrer_plateau();
+    void sortir_plateau();
     ///connstructeurs, destructeurs
     Pion();
     Pion(Case* place,bool _plateau);
@@ -40,7 +43,8 @@ protected :
     char m_orientation;
     //Joueur *m_joueur;
 public :
-    void afficher_orientation(); ///afficher l'orientation de l'animal sur la console
+    void setOrientation();
+    virtual void afficher_char()const=0; ///afficher l'orientation de l'animal sur la console
     //bool pousser();
     Animal();
     Animal(Case *place, bool plateau/*,Joueur joueur*/);

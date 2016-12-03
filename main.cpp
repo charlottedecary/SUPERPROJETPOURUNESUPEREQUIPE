@@ -4,16 +4,13 @@
 #include "Case.h"
 #include "Console.h"
 #include "Pion.h"
+#include "Joueur.h"
 #include <cstdlib>
+#include <cstdio>
+#include <windows.h>
 
 using namespace std;
 
-///METHODE DE JOUEUR!
-void placerPion(Damier &jeu, Pion *a,int x,int y)
-{
-    jeu.getCase(x,y)->ajoutpion(a);
-    a->bouger(jeu.getCase(x,y));
-}
 
 ///METHODE DE DAMIER ?
 /*void affiche(Damier &jeu)
@@ -32,12 +29,14 @@ void placerPion(Damier &jeu, Pion *a,int x,int y)
         }
     }
 }*/
-///NOTE : LES LIGNES ECRITES EN CETTE COULEUR SONT DES PROBLEMES DONT JE NE TE DEMANDE PAS LA RESOLUTION, JE SUIS JUSTE EN TRAIN DE LES INDENTER !///
-
 
 
 int main()
 {
+        ///MODIF!!!!
+    Console*pConsole = NULL;
+    pConsole = Console::getInstance();
+
     ///CREATION PLATEAU DE JEU
     Damier jeu(9);
     jeu.initTab();
@@ -45,18 +44,31 @@ int main()
     Pion *M = new Montagne(jeu.getCase(4,1),true);
     Pion *M1 = new Montagne(jeu.getCase(4,2),true);
     Pion *M2 = new Montagne(jeu.getCase(4,3),true);
-    Pion *R = new Rhinoceros(jeu.getCase(0,0),false);
-    Pion *R1 = new Rhinoceros(jeu.getCase(0,1),false);
-    Pion *R2 = new Rhinoceros(jeu.getCase(0,2),false);
-    Pion *R3 = new Rhinoceros(jeu.getCase(0,3),false);
-    Pion *R4 = new Rhinoceros(jeu.getCase(0,4),false);
-    Pion *E = new Elephant(jeu.getCase(8,0),false);
-    Pion *E1 = new Elephant(jeu.getCase(8,1),false);
-    Pion *E2 = new Elephant(jeu.getCase(8,2),false);
-    Pion *E3 = new Elephant(jeu.getCase(8,3),false);
-    Pion *E4 = new Elephant(jeu.getCase(8,4),false);
 
-    affichage_plateau();
+    Joueur j1("coco",'a',jeu);
+    Joueur j2("cucu",'b',jeu);
+
+    affichage_plateau(pConsole);
+
+    j1.affichage_pions(pConsole);
+    j2.affichage_pions(pConsole);
+
+
+    int a;
+    std::cin>>a;
+
+
+    j1.placerPion(jeu,3,2,0);
+
+/*
+    affichage_plateau(pConsole);
+
+
+    j1.affichage_pions(pConsole);
+    j2.affichage_pions(pConsole);
+
+    //j1.deplacerPion();
+    /*
     affichage_pions(M);
     affichage_pions(M1);
     affichage_pions(M2);
@@ -70,10 +82,9 @@ int main()
     affichage_pions(E2);
     affichage_pions(E3);
     affichage_pions(E4);
-
+    */
     ///BOUCLE DE JEU
 
-    int a;
-    std::cin>>a;
+
     return 0;
 }

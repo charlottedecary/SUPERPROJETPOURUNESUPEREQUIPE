@@ -5,6 +5,7 @@
 #include "Damier.h"
 #include "Case.h"
 #include "Pion.h"
+#include "Console.h"
 
 class Joueur
 {
@@ -13,9 +14,11 @@ private :
     char m_equipe;
     std::vector<Animal*> m_piece;
 public :
-    void placerPion(Damier &jeu,int x,int y);
-    void affiche();
-    Joueur(std::string nom,char equipe);
+    Pion * getPion(int i);
+    void placerPion(Damier &jeu,int i,int x,int y);
+    void deplacerPion(Damier &jeu,int i,int x,int y);
+    void affichage_pions(Console* pConsole);
+    Joueur(std::string nom,char equipe,Damier &jeu);
 };
 
 #endif // JOUEUR_H_INCLUDED

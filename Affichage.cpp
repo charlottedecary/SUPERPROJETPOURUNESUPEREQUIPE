@@ -3,9 +3,11 @@
 #include "Console.h"
 
 
-void affichage_plateau()
-{
+        ///MODIF!!!!
 
+void affichage_plateau(Console*pConsole)
+{
+    pConsole->gotoLigCol(0,0);
 
     std::cout<<"                                             "<<std::endl;
     std::cout<<"                                             "<<std::endl;
@@ -26,11 +28,10 @@ void affichage_plateau()
 
 }
 
-void affichage_pions(Pion *pion)
-{
-    Console* pConsole = NULL;
-    pConsole = Console::getInstance();
+        ///MODIF!!!!
 
+void affichage_pion(Pion *pion,Console* pConsole)
+{
     pConsole->gotoLigCol(5+2*pion->getPlace()->gety(),10+4*pion->getPlace()->getx());
     pion->afficher_char();
 }
